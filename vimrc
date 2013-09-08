@@ -100,6 +100,8 @@ autocmd Syntax lisp,scheme,clojure,racket RainbowParenthesesToggle
 " tabbar
 let g:Tb_MaxSize = 2
 let g:Tb_TabWrap = 1
+" switch buffer
+"let g:Tb_cTabSwitchBufs = 1
 
 hi Tb_Normal guifg=white ctermfg=white
 hi Tb_Changed guifg=green ctermfg=green
@@ -199,6 +201,14 @@ nmap <F4> :IndentGuidesToggle<cr>
 nmap  <D-/> :
 nnoremap <leader>a :Ack
 nnoremap <leader>v V`]
+" for tabbar
+nmap <c-x> :Tbbd<cr>
+nmap H :Tbbp<cr>
+nmap L :Tbbn<cr>
+" for esc
+imap jj <Esc>
+
+autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 
 "------------------
 " Useful Functions
@@ -254,3 +264,67 @@ if has("gui_running")
     map <D-9> 9gt
     map <D-0> :tablast<CR>
 endif
+
+" PEP8
+let g:flake8_builtins="_,apply"
+let g:flake8_ignore="E501,W293"
+let g:flake8_max_line_length=99
+let g:flake8_max_complexity=10
+
+" 高亮当前光标所在的相同词
+autocmd CursorMoved * silent! exe printf('match Underlined /\<%s\>/', expand('<cword>'))
+autocmd CursorHold * silent! exe printf('match Underlined /\<%s\>/', expand('<cword>'))
+
+" 进入黏贴模式，防止自动缩进
+set pastetoggle=<F9>
+
+" 在插入模式下黏贴
+inoremap <C-J> <C-R>"
+
+" Session files Vim关闭时保存会话状态
+set sessionoptions+=unix
+set sessionoptions-=blank
+"set sessionoptions-=options
+autocmd VimEnter * call LoadSession()
+autocmd VimLeave * call MakeSession() 
+
+function! MakeSession()
+    if !has('gui_running')
+        hi clear
+    endif
+    if bufname('')  == ''
+        exe 'bdelete '.bufnr('')
+    endif
+    let l:count = 0
+    let l:i = 0
+    while l:i <= bufnr('$')
+        if buflisted(count)
+            let l:count += 1
+        endif
+        let l:i+=1
+    endwhile
+    if l:count >= 4
+        mksession! ~/.last_session.vim
+    endif
+endfunction
+
+function! LoadSession()
+    "if exists('g:SessionLoaded')
+    "return
+    "endif
+    if expand('%') == '' && filereadable($HOME.'/.last_session.vim') && !&diff
+        silent so ~/.last_session.vim
+    endif
+
+    let l:buftotal = bufnr('$')
+    let l:i = 0
+    let l:crtpath = getcwd() 
+    while l:i <= l:buftotal
+        " 列表中还未载入的buffer，如果不在当前工作目录，会被删除
+        if !bufloaded(l:i) && buflisted(l:i) && expand('%:p') !~ l:crtpath
+            exe 'bdelete '.l:i
+            echo expand('%:p') .' !~ '. l:crtpath
+        endif
+        let l:i += 1
+    endwhile
+endfunction
