@@ -18,5 +18,5 @@ Icon
 Session.vim
 .netrwhist
 
-# bundles installed should be ignored
-bundle
+# bundles installed should be ignored if you want to install it yourself by :BundleInstall
+#bundle
