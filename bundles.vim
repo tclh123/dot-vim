@@ -101,4 +101,7 @@ Bundle 'Lokaltog/vim-distinguished'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'fisadev/fisa-vim-colorscheme'
 
+
+Bundle 'nvie/vim-flake8'
+
 filetype plugin indent on     " required!
