@@ -3,6 +3,13 @@ Tclh123's Vim config
 
 Originaly forked from [Maple's Vim config](https://github.com/humiaozuzu/dot-vimrc).
 
+## Install
+
+```
+cd dot-vimrc
+./install.sh
+```
+
 ## vim-flake8
 
 [Flake8](https://pypi.python.org/pypi/flake8/) is a wrapper around PyFlakes (static syntax checker), PEP8 (style checker) and Ned's MacCabe script (complexity checker).
