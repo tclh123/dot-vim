@@ -5,6 +5,15 @@ Originaly forked from [Maple's Vim config](https://github.com/humiaozuzu/dot-vim
 
 ## Install
 
+If you already have vim/ & .vimrc, backup them first.
+
+```
+mv ~/.vim ~/.vim.backup
+mv ~/.vimrc ~/.vimrc.backup
+```
+
+Then, install,
+
 ```
 cd dot-vimrc
 ./install.sh
