@@ -49,6 +49,9 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'bronson/vim-trailing-whitespace'
 
+"------- python ----------
+Bundle 'nvie/vim-flake8'
+
 "-------------
 " Other Utils
 "-------------
@@ -90,6 +93,9 @@ Bundle 'kien/rainbow_parentheses.vim'
 " Bundle 'vim-scripts/VimClojure'
 " Bundle 'rosstimson/scala-vim-support'
 
+"------- RPC ------
+Bundle 'tclh123/vim-thrift'
+
 "--------------
 " Color Schemes
 "--------------
@@ -101,7 +107,5 @@ Bundle 'Lokaltog/vim-distinguished'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'fisadev/fisa-vim-colorscheme'
 
-
-Bundle 'nvie/vim-flake8'
 
 filetype plugin indent on     " required!
