@@ -3,6 +3,8 @@ Tclh123's Vim config
 
 Originaly forked from [Maple's Vim config](https://github.com/humiaozuzu/dot-vimrc).
 
+We use [vundle](https://github.com/gmarik/vundle) to manage plugins.
+
 ## Install
 
 If you already have vim/ & .vimrc, backup them first.
@@ -44,3 +46,6 @@ All plugins are listed in file `bundles.vim` with detailed comments, just add pl
 1. `:BundleClean` to clean up unused plugins
 2. `:BundleInstall` to install newly added plugins
 3. `:BundleInstall!` to upgrade all plugins
+4. `:BundleInstall tclh123/vim-thrift` to install scripts by name.
+
+see [more](https://github.com/gmarik/vundle/blob/master/doc/vundle.txt)
