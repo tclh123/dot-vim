@@ -66,6 +66,7 @@ Bundle '2072/PHP-Indenting-for-VIm'
 "Bundle 'tpope/vim-rails'
 Bundle 'lepture/vim-jinja'
 "Bundle 'digitaltoad/vim-jade'
+Bundle 'tclh123/vim-plim'
 
 "------- web frontend ----------
 Bundle 'othree/html5.vim'
