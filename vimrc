@@ -62,7 +62,7 @@ autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=12
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
-autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=0
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType sh,bash setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
@@ -158,7 +158,7 @@ let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
 
 " ZenCoding
-let g:user_zen_expandabbr_key='<C-j>'
+let g:user_zen_expandabbr_key='<C-Y>'
 
 " powerline
 "let g:Powerline_symbols = 'fancy'
