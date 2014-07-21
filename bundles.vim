@@ -11,10 +11,14 @@ Bundle 'gmarik/vundle'
 "------------------
 " Code Completions
 "------------------
-Bundle 'Shougo/neocomplcache'
-Bundle 'honza/vim-snippets'
+" Bundle 'Shougo/neocomplcache'
+"Bundle 'honza/vim-snippets'
+"Bundle 'honza/snipmate-snippets'
 Bundle 'ervandew/supertab'
-Bundle 'honza/snipmate-snippets'
+
+"Bundle 'Valloric/YouCompleteMe'
+" Bundle 'davidhalter/jedi-vim'
+
 " zencoding-vim was moved to emmet-vim
 Bundle 'mattn/emmet-vim'
 Bundle 'Raimondi/delimitMate'
