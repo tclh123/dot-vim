@@ -222,7 +222,26 @@ nmap L :Tbbn<cr>
 " for esc
 imap jj <Esc>
 
-autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+"------------------
+
+"flake8
+
+"default: Press <F7> to run flake8 on it
+"autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+"
+"run the Flake8 check every time you write a Python file
+"autocmd BufWritePost *.py call Flake8()
+"let g:syntastic_python_checker_args='--ignore=E501,E225
+
+"syntastic
+
+"no use?
+"let g:syntastic_enable_python_checker = 0
+"let g:syntastic_python_checkers=['flake8']
+"let g:syntastic_python_checker_args='--max-line-length 99'
+
+let g:syntastic_python_flake8_args='--max-line-length 99'
+
 
 "------------------
 " Useful Functions
