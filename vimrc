@@ -164,8 +164,9 @@ let g:user_zen_expandabbr_key='<C-Y>'
 "let g:Powerline_symbols = 'fancy'
 
 " NeoComplCache
+
 " let g:acp_enableAtStartup = 0
-" Use neocomplcache.
+" " Use neocomplcache.
 " let g:neocomplcache_enable_at_startup=1
 " let g:neoComplcache_disableautocomplete=1
 " "let g:neocomplcache_enable_underbar_completion = 1
@@ -174,7 +175,22 @@ let g:user_zen_expandabbr_key='<C-Y>'
 " " Set minimum syntax keyword length.
 " let g:neocomplcache_min_syntax_length = 3
 " let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" set completeopt-=preview
+" " set completeopt-=preview
+
+"" neocomplcache config from spf13-vim
+"let g:acp_enableAtStartup = 0
+"let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_camel_case_completion = 1
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_enable_underbar_completion = 1
+"let g:neocomplcache_enable_auto_delimiter = 1
+"let g:neocomplcache_max_list = 15
+"let g:neocomplcache_force_overwrite_completefunc = 1
+"" Define keyword.
+"if !exists('g:neocomplcache_keyword_patterns')
+"    let g:neocomplcache_keyword_patterns = {}
+"endif
+"let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
 " " neo snippets feature ?
 " imap <C-k> <Plug>(neocomplcache_snippets_force_expand)
@@ -182,26 +198,59 @@ let g:user_zen_expandabbr_key='<C-Y>'
 " imap <C-l> <Plug>(neocomplcache_snippets_force_jump)
 " smap <C-l> <Plug>(neocomplcache_snippets_force_jump)
 
+"" Enable omni completion.
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType c setlocal omnifunc=ccomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" <TAB>: completion.
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" Recent versions of vim come with an omnicompletion script called pythoncomplete.
+" autocmd FileType python set completefunc=pythoncomplete#Complete
+
+"" " SuperTab
+"" let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
+"" let g:SuperTabRetainCompletionType=2
+"let g:SuperTabDefaultCompletionType = '<c-n>'
+"" let g:SuperTabDefaultCompletionType = "context"
+
+" Jedi
+" let g:jedi#popup_select_first = 1
+" let g:jedi#completions_enabled = 0
+
+" YouCompleteMe {
+let g:acp_enableAtStartup = 0
+
+" enable completion from tags
+let g:ycm_collect_identifiers_from_tags_files = 1
+
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType c setlocal omnifunc=ccomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-" Recent versions of vim come with an omnicompletion script called pythoncomplete.
-" autocmd FileType python set completefunc=pythoncomplete#Complete
+" Haskell post write lint and check with ghcmod
+" $ `cabal install ghcmod` if missing and ensure
+" ~/.cabal/bin is in your $PATH.
+if !executable("ghcmod")
+    autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+endif
+" }
 
-" " SuperTab
-" let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
-" let g:SuperTabRetainCompletionType=2
-let g:SuperTabDefaultCompletionType = '<c-n>'
-" let g:SuperTabDefaultCompletionType = "context"
+" Disable the neosnippet preview candidate window
+" When enabled, there can be too much visual noise
+" especially when splits are used.
+set completeopt-=preview
 
-" Jedi
-" let g:jedi#popup_select_first = 1
-" let g:jedi#completions_enabled = 0
 
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store  " MacOSX/Linux
