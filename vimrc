@@ -269,12 +269,12 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " eggcache vim
 nnoremap ; :
-:command W w
-:command WQ wq
-:command Wq wq
-:command Q q
-:command Qa qa
-:command QA qa
+":command W w
+":command WQ wq
+":command Wq wq
+":command Q q
+":command Qa qa
+":command QA qa
 
 " for macvim
 if has("gui_running")
@@ -361,3 +361,10 @@ function! LoadSession()
         let l:i += 1
     endwhile
 endfunction
+
+"dump selected lines
+function! DumpLines() range
+  echo system('sed -n '.a:firstline.','.a:lastline.'p '.expand('%'))
+endfunction
+
+com! -range=% -nargs=0 Dump :<line1>,<line2>call DumpLines()
