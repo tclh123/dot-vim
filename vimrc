@@ -143,6 +143,20 @@ if executable('coffeetags')
     \ }
 endif
 
+" Quick and dirty puppet file support
+let g:tagbar_type_puppet = {
+  \ 'ctagstype': 'puppet',
+  \ 'kinds': [
+    \'c:class',
+    \'s:site',
+    \'n:node',  
+    \'d:definition',
+    \'r:resource',
+    \'f:default'
+  \]
+\}
+
+
 " Nerd Tree
 let NERDChristmasTree=0
 let NERDTreeWinSize=30
