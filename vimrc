@@ -250,8 +250,8 @@ imap jj <Esc>
 "syntastic
 
 "no use?
-"let g:syntastic_enable_python_checker = 0
-"let g:syntastic_python_checkers=['flake8']
+let g:syntastic_enable_python_checker = 0
+let g:syntastic_python_checkers=['flake8']
 "let g:syntastic_python_checker_args='--max-line-length 99'
 
 let g:syntastic_python_flake8_args='--max-line-length 99'
