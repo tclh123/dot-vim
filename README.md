@@ -39,6 +39,16 @@ pip install pyflakes # only syntax check
 
 pyflakes also can used by [syntastic](https://github.com/scrooloose/syntastic) - Syntax checking hacks for vim.
 
+## jshint
+
+[JSHint](https://github.com/jshint/jshint) is a syntax checker for JavaScript.
+
+```
+npm install -g jshint
+```
+
+and [an example config file](https://raw.githubusercontent.com/jshint/jshint/master/examples/.jshintrc).
+
 ## How to manage this vimrc?
 
 All plugins are listed in file `bundles.vim` with detailed comments, just add plugins as you like.
