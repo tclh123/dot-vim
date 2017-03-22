@@ -147,10 +147,12 @@ endif
 let g:tagbar_type_puppet = {
   \ 'ctagstype': 'puppet',
   \ 'kinds': [
+    \'i:import',
     \'c:class',
     \'s:site',
-    \'n:node',  
+    \'n:node',
     \'d:definition',
+    \'v:variable',
     \'r:resource',
     \'f:default'
   \]
@@ -327,6 +329,9 @@ set pastetoggle=<F9>
 
 " 在插入模式下黏贴
 inoremap <C-J> <C-R>"
+
+" 在选择模式下黏贴文本内容但不修改当前寄存器
+vmap <C-P> "_dP"
 
 " Session files Vim关闭时保存会话状态
 set sessionoptions+=unix
