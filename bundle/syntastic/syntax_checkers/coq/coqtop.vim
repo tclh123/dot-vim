@@ -1,6 +1,6 @@
 "============================================================================
 "File:        coqtop.vim
-"Description: Syntax checking plugin for syntastic.vim
+"Description: Syntax checking plugin for syntastic
 "Maintainer:  Matvey Aksenov <matvey.aksenov at gmail dot com>
 "License:     This program is free software. It comes without any warranty,
 "             to the extent permitted by applicable law. You can redistribute
@@ -10,24 +10,19 @@
 "
 "============================================================================
 
-if exists("g:loaded_syntastic_coq_coqtop_checker")
+if exists('g:loaded_syntastic_coq_coqtop_checker')
     finish
 endif
-let g:loaded_syntastic_coq_coqtop_checker=1
+let g:loaded_syntastic_coq_coqtop_checker = 1
 
-function! SyntaxCheckers_coq_coqtop_IsAvailable()
-    return executable('coqtop')
-endfunction
+let s:save_cpo = &cpo
+set cpo&vim
 
-function! SyntaxCheckers_coq_coqtop_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-        \ 'exe': 'coqtop',
-        \ 'args': '-noglob -batch -load-vernac-source',
-        \ 'filetype': 'coq',
-        \ 'subchecker': 'coqtop' })
+function! SyntaxCheckers_coq_coqtop_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'args_after': '-noglob -batch -load-vernac-source' })
 
     let errorformat =
-        \ '%AFile \"%f\"\, line %l\, characters %c\-%.%#\:,'.
+        \ '%AFile "%f"\, line %l\, characters %c-%.%#\:,'.
         \ '%C%m'
 
     return SyntasticMake({
@@ -38,3 +33,8 @@ endfunction
 call g:SyntasticRegistry.CreateAndRegisterChecker({
     \ 'filetype': 'coq',
     \ 'name': 'coqtop'})
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
+
+" vim: set sw=4 sts=4 et fdm=marker:

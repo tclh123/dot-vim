@@ -65,6 +65,8 @@ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=
 autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=0
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType sh,bash setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType c,cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 noexpandtab
 
 " syntax support
 autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
@@ -256,7 +258,10 @@ let g:syntastic_enable_python_checker = 0
 let g:syntastic_python_checkers=['flake8']
 "let g:syntastic_python_checker_args='--max-line-length 99'
 
-let g:syntastic_python_flake8_args='--max-line-length 99'
+let g:syntastic_python_flake8_args='--max-line-length 150'
+
+"puppet
+let g:syntastic_puppet_checkers=['puppet']
 
 
 "------------------

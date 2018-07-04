@@ -1,6 +1,6 @@
 "============================================================================
 "File:        mandoc.vim
-"Description: Syntax checking plugin for syntastic.vim
+"Description: Syntax checking plugin for syntastic
 "Maintainer:  LCD 47 <lcd047 at gmail dot com>
 "License:     This program is free software. It comes without any warranty,
 "             to the extent permitted by applicable law. You can redistribute
@@ -9,21 +9,17 @@
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 "============================================================================
-if exists("g:loaded_syntastic_nroff_mandoc_checker")
+
+if exists('g:loaded_syntastic_nroff_mandoc_checker')
     finish
 endif
-let g:loaded_syntastic_nroff_mandoc_checker=1
+let g:loaded_syntastic_nroff_mandoc_checker = 1
 
-function! SyntaxCheckers_nroff_mandoc_IsAvailable()
-    return executable("mandoc")
-endfunction
+let s:save_cpo = &cpo
+set cpo&vim
 
-function! SyntaxCheckers_nroff_mandoc_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-        \ 'exe': 'mandoc',
-        \ 'args': '-Tlint',
-        \ 'filetype': 'nroff',
-        \ 'subchecker': 'mandoc' })
+function! SyntaxCheckers_nroff_mandoc_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'args_after': '-Tlint' })
 
     let errorformat =
         \ '%E%f:%l:%c: %tRROR: %m,' .
@@ -39,3 +35,7 @@ call g:SyntasticRegistry.CreateAndRegisterChecker({
     \ 'filetype': 'nroff',
     \ 'name': 'mandoc'})
 
+let &cpo = s:save_cpo
+unlet s:save_cpo
+
+" vim: set sw=4 sts=4 et fdm=marker:

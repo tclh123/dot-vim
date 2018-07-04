@@ -1,6 +1,6 @@
 "============================================================================
 "File:        podchecker.vim
-"Description: Syntax checking plugin for syntastic.vim
+"Description: Syntax checking plugin for syntastic
 "Maintainer:  LCD 47 <lcd047 at gmail dot com>
 "License:     This program is free software. It comes without any warranty,
 "             to the extent permitted by applicable law. You can redistribute
@@ -10,21 +10,14 @@
 "
 "============================================================================
 
-if exists("g:loaded_syntastic_perl_podchecker_checker")
+if exists('g:loaded_syntastic_perl_podchecker_checker')
     finish
 endif
-let g:loaded_syntastic_perl_podchecker_checker=1
-
-function! SyntaxCheckers_perl_podchecker_IsAvailable()
-    return SyntaxCheckers_pod_podchecker_IsAvailable()
-endfunction
-
-function! SyntaxCheckers_perl_podchecker_GetLocList()
-    return SyntaxCheckers_pod_podchecker_GetLocList()
-endfunction
+let g:loaded_syntastic_perl_podchecker_checker = 1
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({
     \ 'filetype': 'perl',
-    \ 'name': 'podchecker'})
+    \ 'name': 'podchecker',
+    \ 'redirect': 'pod/podchecker'})
 
-runtime! syntax_checkers/pod/*.vim
+" vim: set sw=4 sts=4 et fdm=marker:
