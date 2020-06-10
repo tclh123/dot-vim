@@ -103,6 +103,10 @@ Bundle 'kien/rainbow_parentheses.vim'
 "------- RPC ------
 Bundle 'tclh123/vim-thrift'
 
+"------- terraform ------
+Bundle 'hashivim/vim-terraform'
+Bundle 'juliosueiras/vim-terraform-completion'
+
 "--------------
 " Color Schemes
 "--------------
