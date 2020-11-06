@@ -14,6 +14,7 @@ Bundle 'gmarik/vundle'
 " Bundle 'Shougo/neocomplcache'
 "Bundle 'honza/vim-snippets'
 "Bundle 'honza/snipmate-snippets'
+
 Bundle 'ervandew/supertab'
 
 "Bundle 'Valloric/YouCompleteMe'
@@ -56,6 +57,10 @@ Bundle 'bronson/vim-trailing-whitespace'
 
 "------- python ----------
 Bundle 'nvie/vim-flake8'
+
+"------- Rust ----------
+Bundle 'rust-lang/rust.vim'
+Bundle 'racer-rust/vim-racer'
 
 "-------------
 " Other Utils

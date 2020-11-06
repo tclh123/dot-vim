@@ -203,6 +203,7 @@ let g:user_zen_expandabbr_key='<C-Y>'
 " smap <C-l> <Plug>(neocomplcache_snippets_force_jump)
 
 " Enable omni completion.
+" type '<C-X><C-O>' in insert mode for omni complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -217,7 +218,29 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
 " let g:SuperTabRetainCompletionType=2
 let g:SuperTabDefaultCompletionType = '<c-n>'
-" let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "context"
+
+" racer-rust/vim-racer
+" Add g:racer_cmd to your .vimrc. It contains full path to racer executable
+" file. Variable g:racer_cmd is optional. You do not need to use this variable
+" if the executable file is in a directory that is specified in $PATH, else
+" you should specified full path to racer executable binary file in this
+" g:racer_cmd. Also it's worth turning on 'hidden' mode for buffers otherwise
+" you need to save the current buffer every time you do a goto-definition.
+" E.g.:
+set hidden
+"let g:racer_cmd = "/home/user/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+"let g:racer_insert_paren = 1
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+    autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
+augroup END
 
 " Jedi
 " let g:jedi#popup_select_first = 1
