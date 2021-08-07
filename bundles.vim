@@ -9,6 +9,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 "------------------
+"" Language servers
+"------------------
+Bundle 'neoclide/coc.nvim'
+
+"------------------
 " Code Completions
 "------------------
 " Bundle 'Shougo/neocomplcache'

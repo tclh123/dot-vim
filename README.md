@@ -21,6 +21,79 @@ cd dot-vimrc
 ./install.sh
 ```
 
+## CoC
+
+Vim + Language servers
+
+<https://github.com/neoclide/coc.nvim>
+
+Install nvm, Node, yarn,
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+nvm install 14
+npm install --global yarn
+```
+
+Install & Build coc.nvim,
+
+```
+# Run this command in vim, it will clone the coc.nvim repo into .vim/bundle
+# :BundleInstall 'neoclide/coc.nvim'
+
+# Build coc.nvim (a node project)
+cd ~/.vim/bundle/coc.nvim
+yarn install
+yarn build
+```
+
+It will generate the config dir `~/.config/coc` when you first start vim and loading the plugin.
+
+### clangd
+
+For C++/C/Objective-C, (see https://github.com/neoclide/coc.nvim/wiki/Language-servers#supported-features)
+
+Install clangd, (see https://clangd.llvm.org/installation),
+- For Mac OS X, `brew install llvm`
+- For others: Most distributions include clangd in a clangd package, in a clang-tools package, or in the full llvm distribution.
+
+For centos/redhat, the following commands will install clangd 7.
+
+```
+# ref https://moevis.cc/quick-guide-to-install-clang-in-centos/
+
+yum install -y centos-release-scl
+yum install -y llvm-toolset-7.0-clang-tools-extra
+source /opt/rh/llvm-toolset-7.0/enable
+```
+
+Use the vim command `:CocConfig` to open your user configuration file, and put
+
+```
+{
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+    }
+  }
+}
+```
+
+#### coc-clangd (optional)
+
+https://github.com/clangd/coc-clangd
+
+The coc extension connects coc.nvim to the clangd language server.
+
+```vim
+# Run this in vim
+:CocInstall coc-clangd
+
+# It will download coc-clangd into ~/.config/coc/extensions/node_modules/
+```
+
 ## vim-flake8
 
 [Flake8](https://pypi.python.org/pypi/flake8/) is a wrapper around PyFlakes (static syntax checker), PEP8 (style checker) and Ned's MacCabe script (complexity checker).
