@@ -57,7 +57,7 @@ Install clangd, (see https://clangd.llvm.org/installation),
 - For Mac OS X, `brew install llvm`
 - For others: Most distributions include clangd in a clangd package, in a clang-tools package, or in the full llvm distribution.
 
-For centos/redhat, the following commands will install clangd 7.
+For centos/redhat, the following commands will install clangd 7 (too old).
 
 ```
 # ref https://moevis.cc/quick-guide-to-install-clang-in-centos/
@@ -66,6 +66,23 @@ yum install -y centos-release-scl
 yum install -y llvm-toolset-7.0-clang-tools-extra
 source /opt/rh/llvm-toolset-7.0/enable
 ```
+
+Build clangd from source,
+
+```
+
+git clone --depth=1 https://github.com/llvm/llvm-project.git
+
+cd llvm-project
+mkdir build && cd build
+
+cmake --build `pwd` --target clangd -j8 && sudo cmake --install `pwd` --component clangd
+```
+
+refs:
+
+- https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clangd#building-and-testing-clangd
+- https://jdhao.github.io/2021/07/03/install_clangd_on_linux/
 
 Use the vim command `:CocConfig` to open your user configuration file, and put
 
@@ -81,6 +98,8 @@ Use the vim command `:CocConfig` to open your user configuration file, and put
 }
 ```
 
+More clangd configuration https://clangd.llvm.org/config
+
 #### coc-clangd (optional)
 
 https://github.com/clangd/coc-clangd
@@ -92,6 +111,36 @@ The coc extension connects coc.nvim to the clangd language server.
 :CocInstall coc-clangd
 
 # It will download coc-clangd into ~/.config/coc/extensions/node_modules/
+```
+
+## Generate compile_commands.json for clangd
+
+### Bear
+
+ref https://github.com/rizsotto/Bear/blob/master/INSTALL.md
+
+For Redhat,
+
+```
+# No need to install dependencies manually, the cmake in bear project will download them.
+# # Install protobuf & grpc
+# # dnf install https://cbs.centos.org/kojifiles/packages/protobuf/3.6.1/4.el7/x86_64/protobuf-3.6.1-4.el7.x86_64.rpm
+# dnf install https://cbs.centos.org/kojifiles/packages/protobuf/3.6.1/4.el7/x86_64/protobuf-compiler-3.6.1-4.el7.x86_64.rpm
+# dnf install https://cbs.centos.org/kojifiles/packages/protobuf/3.6.1/4.el7/x86_64/protobuf-devel-3.6.1-4.el7.x86_64.rpm
+# dnf install https://cbs.centos.org/kojifiles/packages/grpc/1.20.1/1.el7/x86_64/grpc-1.20.1-1.el7.x86_64.rpm
+# dnf install https://cbs.centos.org/kojifiles/packages/grpc/1.20.1/1.el7/x86_64/grpc-plugins-1.20.1-1.el7.x86_64.rpm
+# 
+# # Other dependencies for bear
+# dnf install json-devel spdlog-devel fmt-devel
+
+# Download bear source code
+curl -LO https://github.com/rizsotto/Bear/archive/refs/tags/3.0.13.tar.gz
+tar xvf 3.0.13.tar.gz
+cd Bear-3.0.13/
+
+cmake -DENABLE_UNIT_TESTS=OFF -DENABLE_FUNC_TESTS=OFF $BEAR_SOURCE_DIR
+make all -j8
+make install
 ```
 
 ## vim-flake8
