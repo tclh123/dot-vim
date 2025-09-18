@@ -71,7 +71,7 @@ autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=12
 autocmd FileType c,cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
 " syntax support
-autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
+"autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
 " js
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
@@ -277,6 +277,14 @@ imap jj <Esc>
 "let g:syntastic_python_checker_args='--ignore=E501,E225
 
 "syntastic
+
+" for react js
+"au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.typescriptreact
+" For JavaScript/React files
+autocmd FileType typescriptreact,javascript,typescript,jsx,tsx setlocal syntax=javascript
+" Disable syntax for .jsx and .tsx files
+"autocmd BufRead,BufNewFile *.jsx set syntax=
+"autocmd BufRead,BufNewFile *.tsx set syntax=
 
 "no use?
 let g:syntastic_enable_python_checker = 0
