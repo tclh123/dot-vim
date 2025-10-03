@@ -21,6 +21,20 @@ cd dot-vimrc
 ./install.sh
 ```
 
+## tag bar
+
+https://github.com/preservim/tagbar
+
+Vim plugin that displays tags in a window, ordered by scope
+
+```
+$ ctags --help
+Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert
+  Compiled: Jul  9 2009, 22:03:58
+  Addresses: <dhiebert@users.sourceforge.net>, http://ctags.sourceforge.net
+  Optional compiled features: +wildcards, +regex
+```
+
 ## CoC
 
 Vim + Language servers
@@ -171,9 +185,13 @@ npm install -g jshint
 
 and [an example config file](https://raw.githubusercontent.com/jshint/jshint/master/examples/.jshintrc).
 
-## How to manage this vimrc?
+## Vim Plugin Management
 
 All plugins are listed in file `bundles.vim` with detailed comments, just add plugins as you like.
+
+To install a new plugin, you can go to [bundle/](bundle/) and `git clone` the plugin git repo. And add the plugin to `bundles.vim`.
+
+Or you can use the command below:
 
 1. `:BundleClean` to clean up unused plugins
 2. `:BundleInstall` to install newly added plugins

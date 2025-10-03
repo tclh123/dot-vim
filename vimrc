@@ -69,6 +69,8 @@ autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=12
 " autocmd FileType c,cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 noexpandtab
 " tmp for libmc
 autocmd FileType c,cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType dart setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType swift setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 
 " syntax support
 "autocmd Syntax javascript set syntax=jquery   " JQuery syntax support

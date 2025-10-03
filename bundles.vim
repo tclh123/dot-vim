@@ -67,6 +67,9 @@ Bundle 'nvie/vim-flake8'
 Bundle 'rust-lang/rust.vim'
 Bundle 'racer-rust/vim-racer'
 
+"------- Swift ----------
+Bundle 'keith/swift.vim'
+
 "-------------
 " Other Utils
 "-------------
