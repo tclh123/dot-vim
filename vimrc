@@ -119,6 +119,7 @@ hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
 let g:EasyMotion_leader_key = '<Leader>'
 
 " Tagbar
+let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 let g:tagbar_left=1
 let g:tagbar_width=30
 let g:tagbar_autofocus = 1

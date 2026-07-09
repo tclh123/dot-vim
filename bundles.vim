@@ -11,7 +11,7 @@ Bundle 'gmarik/vundle'
 "------------------
 "" Language servers
 "------------------
-Bundle 'neoclide/coc.nvim'
+" Bundle 'neoclide/coc.nvim'
 
 "------------------
 " Code Completions
